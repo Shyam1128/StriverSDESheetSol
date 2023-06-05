@@ -1,0 +1,30 @@
+/*****    SET MATRIX ZEROES  *****/
+
+Explantion : Since we have to make zeroes in both rows and columns in the matrix after encountering 0 in the matrix so my approach for this is to keep track
+of the indicies in the map and just marking it as true and then again traversing the matrix and this time we check if that particular row or column is marked if yes then we 
+have to make that cell(i,j) to 0.
+
+TC :- O(M*N)
+SC :- O(M+N)
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& mat) {
+        int row = mat.size();
+        int col = mat[0].size();
+        unordered_map<int,int> mp1,mp2;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(!mat[i][j]){
+                mp1[i]++;
+                mp2[j]++;
+            }
+            }
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(mp1.count(i)>0 or mp2.count(j)>0) mat[i][j]=0;
+            }
+        }
+    }
+};
