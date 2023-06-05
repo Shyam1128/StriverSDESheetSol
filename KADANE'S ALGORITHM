@@ -1,0 +1,20 @@
+/****** KADANE'S ALGORITHM ******/
+
+Explanation : To get the maximum subarray sum we use this algorithm which calculates in very optimized way.
+
+TC : O(n);
+SC : O(1);
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int len = nums.size();
+        int best =INT_MIN,sum=0;
+        if(len==1) return nums[0];
+        for(int i=0;i<len;i++){
+            sum = max(nums[i],sum+nums[i]);
+            best = max(best,sum);
+        }
+        return best;
+    }
+};
